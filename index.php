@@ -19,13 +19,14 @@ $result = $statement->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
     <ul>
+        <li><a href="tousLesJeux.php">voir tous les jeux</a></li>
         <li><a href="byConsole.php?console=ps4">voir les jeux PS4</a></li>
         <li><a href="byConsole.php?console=xbox">voir les jeux xbox</a></li>
         <li><a href="byConsole.php?console=switch">voir les jeux switch</a></li>
         <li><a href="byConsole.php?console=Amiga">voir les jeux Amiga</a></li>
-        <li><a href="tousLesJeux.php">voir tous les jeux</a></li>
-        <br>
         <li><a href="form_insert.php" >Ajouter un jeu</a></li>
+        <br>
+
     </ul>
 <table border>
     <thead>
@@ -37,6 +38,7 @@ $result = $statement->fetchAll(PDO::FETCH_ASSOC);
             <th>ID</th>
             <th>NOM</th>
             <th>CONSOLE</th>
+            <th colspan="2">EDIT</th>
          
         </tr>
        <?php
@@ -45,6 +47,8 @@ $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         <td><?=$col['id']?></td>
         <td><?=$col['nom']?></td>
         <td><?=$col['console']?></td>
+        <td><a href="form_update.php?id=<?=$col['id']?>">Modifier</a></td>
+        <td><a href="delete.php?id=<?=$col['id']?>">Effacer</a></td>
         <?php endforeach?>
        </tr>
     </tbody>

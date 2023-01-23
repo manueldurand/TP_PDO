@@ -27,6 +27,9 @@ foreach($result as $arr => $col):
   
     <li><?= $col["nom"]." sur la console ".$col['console'] ?></li>
     <a href="showOne.php?id=<?=$id?>">Voir ce jeu en détail</a>
+    <a href="form_update.php?id=<?=$id?>">Modifier ce jeu</a>
+    <a href="delete.php?id=<?=$id?>">Effacer ce jeu</a>
+    <br><br>
     
 <?php endforeach?>
     </ul>
