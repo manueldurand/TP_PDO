@@ -12,7 +12,10 @@ include "connexion.php";
 // include "insert_prepare.php";
 // echo"Id :".$pdo->lastInsertId()."<br>";
 
-$statement = $pdo->query("SELECT * FROM `mes_jeux`");
+$statement = $pdo->query("SELECT mes_jeux.id, nom, nom_console as console FROM mes_jeux 
+JOIN consoles
+ON mes_jeux.console_id = consoles.id
+ORDER BY mes_jeux.id;");
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);
 // var_dump($result);
 echo "<br>";

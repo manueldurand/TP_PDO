@@ -13,18 +13,22 @@ include "connexion.php";
 // include "insert_prepare.php";
 // echo"Id :".$pdo->lastInsertId()."<br>";
 
-$statement = $pdo->query("SELECT * FROM `mes_jeux`");
+$statement = $pdo->query("SELECT mes_jeux.id, nom, nom_console as console FROM mes_jeux 
+JOIN consoles
+ON mes_jeux.console_id = consoles.id
+ORDER BY mes_jeux.id;");
+
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-// var_dump($result);
+var_dump($result);
 ?>
 
     <ul>
         <li><a href="tousLesJeux.php">voir tous les jeux</a></li>
+        <li><a href="form_insert.php" >Ajouter un jeu</a></li>
         <li><a href="byConsole.php?console=ps4">voir les jeux PS4</a></li>
         <li><a href="byConsole.php?console=xbox">voir les jeux xbox</a></li>
         <li><a href="byConsole.php?console=switch">voir les jeux switch</a></li>
         <li><a href="byConsole.php?console=Amiga">voir les jeux Amiga</a></li>
-        <li><a href="form_insert.php" >Ajouter un jeu</a></li>
         <br>
 
     </ul>
