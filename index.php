@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TP_PDO</title>
 </head>
 <body>
     <h1>MES JEUX VIDEOS QUE J'ADORE</h1>
+    <h3><i>(en fait j'y connais rien...)</i></h3>
 <?php
 include "connexion.php";
 // include "insert_prepare.php";
@@ -19,16 +20,19 @@ ON mes_jeux.console_id = consoles.id
 ORDER BY mes_jeux.id;");
 
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-var_dump($result);
 ?>
 
     <ul>
         <li><a href="tousLesJeux.php">voir tous les jeux</a></li>
-        <li><a href="form_insert.php" >Ajouter un jeu</a></li>
+        <br>
         <li><a href="byConsole.php?console=ps4">voir les jeux PS4</a></li>
         <li><a href="byConsole.php?console=xbox">voir les jeux xbox</a></li>
+        <li><a href="byConsole.php?console=N.E.S">voir les jeux N.E.S</a></li>
+        <li><a href="byConsole.php?console=PSP">voir les jeux PSP</a></li>
         <li><a href="byConsole.php?console=switch">voir les jeux switch</a></li>
         <li><a href="byConsole.php?console=Amiga">voir les jeux Amiga</a></li>
+        <br>
+        <li><a href="form_insert.php" >Ajouter un jeu</a></li>
         <br>
 
     </ul>
@@ -42,7 +46,7 @@ var_dump($result);
             <th>ID</th>
             <th>NOM</th>
             <th>CONSOLE</th>
-            <th colspan="2">EDIT</th>
+            <th colspan="2">EDITER</th>
          
         </tr>
        <?php

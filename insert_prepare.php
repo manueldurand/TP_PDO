@@ -1,16 +1,16 @@
 <?php
 include "connexion.php";
 $nom = filter_input(INPUT_POST, 'nom');
-$console = filter_input(INPUT_POST, 'console');
+$console_id = filter_input(INPUT_POST, 'console');
 // preparation
 $statement = $pdo->prepare(
-    "INSERT INTO `mes_jeux`(nom, console)
+    "INSERT INTO `mes_jeux`(nom, console_id)
     VALUES (:n, :c);");
 
     // faire correspondre les valeurs, : pour utiliser un nom à la place de ?...
 
 $statement->bindParam(':n', $nom, PDO::PARAM_STR);
-$statement->bindParam(':c', $console, PDO::PARAM_STR);
+$statement->bindParam(':c', $console_id, PDO::PARAM_STR);
 
 $result = $statement->execute();
 

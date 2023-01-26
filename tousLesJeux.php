@@ -17,7 +17,7 @@ JOIN consoles
 ON mes_jeux.console_id = consoles.id
 ORDER BY mes_jeux.id;");
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-// var_dump($result);
+var_dump($result);
 echo "<br>";
 
 echo "<br>";

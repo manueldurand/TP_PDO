@@ -13,12 +13,12 @@
 include 'connexion.php';
 $id = filter_input(INPUT_GET, 'id');
 
-$statement =  $pdo->prepare("SELECT * FROM `mes_jeux` WHERE id = :id");
+$statement =  $pdo->prepare("SELECT *, nom_console FROM mes_jeux JOIN consoles ON mes_jeux.console_id = consoles.id WHERE mes_jeux.id = :id");
 $statement->bindParam(':id', $id, PDO::PARAM_INT);
 $statement->execute();
 $jeu = $statement->fetch(PDO::FETCH_ASSOC);
 $nom = $jeu['nom'];
-$console = $jeu['console'];
+$console = $jeu['nom_console'];
 $id = $jeu['id'];
     ?>
     <h1>Modification d'un ancien jeu</h1>
@@ -26,12 +26,17 @@ $id = $jeu['id'];
         <label for="nom">Nom du jeu :</label>
         <input type="text" size="40" name="nom" value="<?= $nom; ?>"><br>
         <label for="">Nom de la console :</label>
-        <input type="text" size="40" name="console" value="<?= $console; ?>"><br>
-        <input type="hidden" name="id" value="<?=$id;?>">
+        <select name="console" id="console">
+            <option value=""><?= $console ?></option>
+            <option value="1">xbox</option>
+            <option value="2">N.E.S</option>
+            <option value="3">PS4</option>
+            <option value="4">switch</option>
+            <option value="5">Amiga</option>
+            <option value="6">PSP</option>
+        </select>
         <input type="submit" name="ok" value="ok">
     </form>
-
-
 </body>
 
 </html>

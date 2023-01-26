@@ -1,16 +1,17 @@
 <?php
 include './connexion.php';
-$id = $_GET['id'];
-$statement = $pdo->query("SELECT * FROM `mes_jeux` WHERE id = " . $id);
+$id = filter_input(INPUT_GET, 'id');
+$statement = $pdo->query("SELECT * FROM mes_jeux JOIN consoles
+ON mes_jeux.console_id = consoles.id WHERE mes_jeux.id = " . $id);
 $result = $statement->fetch(PDO::FETCH_ASSOC);
 // var_dump($result);
 
-echo 'Mon jeu numéro : ' . $result['id'];
-echo '<br>';
+
 echo 'Nom : ' . $result['nom'];
 echo '<br>';
-echo 'Console : ' . $result['console'];
+echo 'Console : ' . $result['nom_console'];
 echo '<br>'; ?>
+<p>Idéalement on met une description du jeu ici...voire une photo !</p>
 <a href="form_update.php?id=<?= $id ?>">Modifier ce jeu</a>
 <br>
 <a href="delete.php?id=<?=$id?>">Effacer ce jeu</a>

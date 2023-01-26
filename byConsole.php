@@ -12,8 +12,10 @@
     include './connexion.php';
     $console = filter_input(INPUT_GET, 'console');
     // var_dump($console);
-    $statement = $pdo->query("SELECT * FROM `mes_jeux` WHERE console = '$console' ORDER BY LOWER( `nom`)");
+    $statement = $pdo->query("SELECT mes_jeux.id, mes_jeux.nom  FROM `mes_jeux` JOIN consoles
+    ON mes_jeux.console_id = consoles.id WHERE nom_console = '$console' ");
     $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+
     ?>
     <h3>Les jeux de la console <?=str_replace('\'', '', $console)?> :</h3>
     <ul>
@@ -22,7 +24,7 @@
         $id = $col['id'];?>
       
         <li><?= $col["nom"] ?></li>
-        <a href="showOne.php?id=<?=$id?>">Voir ce jeu en détail</a>
+        <a href="showOne.php?id=<?=$col['id'];?>">Voir ce jeu en détail</a>
         
     <?php endforeach?>
         </ul>

@@ -13,7 +13,14 @@
         <input type="text" size="40" name="nom">
         <br>
         <label>Nom de la console</label>
-        <input type="text" size="40" name="console">
+        <select name="console" id="console">
+            <option value="1">xbox</option>
+            <option value="2">N.E.S</option>
+            <option value="3">PS4</option>
+            <option value="4">switch</option>
+            <option value="5">Amiga</option>
+            <option value="6">PSP</option>
+        </select>
         <input type="submit" name="ok" value="ok">
 
     </form>
